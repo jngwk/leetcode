@@ -1,30 +1,19 @@
 class Solution {
     public int searchInsert(int[] nums, int target) {
-        int lp = 0;
-        int rp = nums.length - 1;
+        int p1 = 0;
+        int p2 = nums.length-1;
 
-        while(lp <= rp){
-            int k = (rp + lp) / 2;
-            if(target < nums[k]){
-                rp = k - 1;
-            }
-            else if(target > nums[k]){
-                lp = k + 1;
-            }
-            else{
-                return k;
+        while(p1 <= p2){
+            int center = (p2 + p1) / 2;
+            if(target < nums[center]){
+                p2 = center - 1;
+            }else if(target > nums[center]){
+                p1 = center + 1;
+            }else{
+                return center;
             }
         }
 
-        return lp;
-        // if(target < nums[lp]){
-        //     if(lp == 0){
-        //         return lp;
-        //     }
-        //     return lp - 1;
-        // }
-        // else{
-        //     return lp + 1;
-        // }
+        return p1;
     }
 }
